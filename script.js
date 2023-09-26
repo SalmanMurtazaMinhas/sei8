@@ -1,8 +1,61 @@
 const slotSymbols = [
-    ['Kawther', 'Noor', 'Zainab A', 'Sami', 'Hasan', 'Dawood'],
-    ['Majid', 'Amira', 'Saud', 'Zahra', 'Zainab S', 'Raja'],
-    ['Abbas', 'S.Ebrahim', 'S.Ali', ' ', 'Hussain', 'Bashayer']
+    ['Kawther', 'Noor', 'Zainab.A', 'Sami', 'Hasan', 'Dawood'],
+    ['Majid', 'Amira', '-', '-', 'Zainab.S', 'Raja'],
+    ['Abbas', 'S.Ebrahim', 'Saud', 'Zahra', 'Hussain', 'Bashayer']
   ];
+  
+  let loader = true
+  const spinButton = document.querySelector('.spin-button')
+
+  const meme01 = document.querySelector('.meme01')
+  const meme02 = document.querySelector('.meme02')
+  const meme03 = document.querySelector('.meme03')
+  const meme04 = document.querySelector('.meme04')
+  const meme05 = document.querySelector('.meme05')
+  const meme06 = document.querySelector('.meme06')
+
+  const spinAudio = document.querySelector('.spin-audio')
+  const audio = document.querySelector('audio')
+  const memeAudio01 = document.querySelector('.meme-audio-01')
+  const memeAudio02 = document.querySelector('.meme-audio-02')
+  const memeAudio03 = document.querySelector('.meme-audio-03')
+  const memeAudio04 = document.querySelector('.meme-audio-04')
+  const memeAudio05 = document.querySelector('.meme-audio-05')
+  const memeAudio06 = document.querySelector('.meme-audio-06')
+
+  spinButton.addEventListener('click', () => {
+    // console.log('sudio')
+    spinAudio.play()
+  })
+
+  meme01.addEventListener('click', () => {
+    memeAudio01.play()
+  })
+
+  meme02.addEventListener('click', () => {
+    memeAudio02.play()
+  })
+
+  meme03.addEventListener('click', () => {
+    memeAudio03.play()
+  })
+
+  meme04.addEventListener('click', () => {
+    memeAudio04.play()
+  })
+
+  meme05.addEventListener('click', () => {
+    memeAudio05.play()
+  })
+
+  meme06.addEventListener('click', () => {
+    memeAudio06.play()
+  })
+
+  // console.log(slotSymbols[2][0])
+  // slotSymbols[0].splice(0,1)
+  // slotSymbols[1].splice(0,1)
+  // slotSymbols[2].splice(0,1)
   
       function createSymbolElement(symbol) {
         const div = document.createElement('div');
@@ -14,6 +67,7 @@ const slotSymbols = [
       let spun = false;
       function spin() {
         if (spun) {
+          loader =false
           reset();
         }
         const slots = document.querySelectorAll('.slot');
@@ -23,7 +77,7 @@ const slotSymbols = [
           const symbols = slot.querySelector('.symbols');
           const symbolHeight = symbols.querySelector('.symbol')?.clientHeight;
           const symbolCount = symbols.childElementCount;
-          console.log('symbolcount' , symbolCount)
+          // console.log('symbolcount' , symbolCount)
   
           symbols.innerHTML = '';
   
@@ -40,20 +94,31 @@ const slotSymbols = [
           // console.log(randomOffset)
           symbols.style.top = `${randomOffset}px`;
   
-          symbols.addEventListener('transitionend', () => {
-            completedSlots++;
-            if (completedSlots === slots.length) {
-              logDisplayedSymbols();
-            }
-          }, { once: true });
+          // symbols.addEventListener('transitionend', () => {
+          //   completedSlots++;
+          //   if (completedSlots === slots.length) {
+          //     // logDisplayedSymbols();
+          //     // console.log(completedSlots)
+          //     // console.log(slots.length)
+          //   }
+          // }, { once: true });
         });
   
         spun = true;
+        // loader =false
+
+        if (loader === false){
+          logDisplayedSymbols()
+          loader = true
+        }
       }
   
       function reset() {
         const slots = document.querySelectorAll('.slot');
   
+        memeAudio06.pause()
+        memeAudio06.currentTime = 0
+        
         slots.forEach(slot => {
           const symbols = slot.querySelector('.symbols');
           symbols.style.transition = 'none';
@@ -64,17 +129,24 @@ const slotSymbols = [
       }
   
       function logDisplayedSymbols() {
-        const slots = document.querySelectorAll('.slot');
-        const displayedSymbols = [];
+        slotSymbols[0].splice(0,1)
+        slotSymbols[1].splice(0,1)
+        slotSymbols[2].splice(0,1)
+        // console.log(slotSymbols)
+        // const slots = document.querySelectorAll('.slot');
+        // const displayedSymbols = [];
   
-        slots.forEach((slot, index) => {
-          const symbols = slot.querySelector('.symbols');
-          const symbolIndex = Math.floor(Math.abs(parseInt(symbols.style.top, 10)) / slot.clientHeight) % slotSymbols[index].length;
-          const displayedSymbol = slotSymbols[index][symbolIndex];
-          displayedSymbols.push(displayedSymbol);
-        });
+        // slots.forEach((slot, index) => {
+        //   const symbols = slot.querySelector('.symbols');
+        //   const symbolIndex = Math.floor(Math.abs(parseInt(symbols.style.top, 10)) / slot.clientHeight) % slotSymbols[index].length;
+        //   const displayedSymbol = slotSymbols[index][symbolIndex];
+        //   displayedSymbols.push(displayedSymbol);
+        // });
   
-        console.log(displayedSymbols);
+        // console.log(displayedSymbols);
+        
       }
   
       spin();
+
+      
