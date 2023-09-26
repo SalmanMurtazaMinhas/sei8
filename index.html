@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <!-- <div class="container">
     <div class="slotcontainer">
       <div class="slot">
         <div class="symbols" id="slot1Symbols"></div>
@@ -27,7 +27,55 @@
       <button onclick="spin()">Spin</button>
       <button onclick="reset();">Reset</button>
     </div>
+  </div> -->
+
+  <div id="container">
+    <div class="container-inner">
+      <div class="content">
+        <!-- <p>Do you want to Continue?</p> -->
+        <div class="container">
+          <div class="slotcontainer">
+            <div class="slot">
+              <div class="symbols" id="slot1Symbols"></div>
+            </div>
+      
+            <div class="slot">
+              <div class="symbols" id="slot2Symbols"></div>
+            </div>
+      
+            <div class="slot">
+              <div class="symbols" id="slot3Symbols"></div>
+            </div>
+          </div>
+      
+          <div style="display: flex;">
+            <!-- <button onclick="spin()">Spin</button>
+            <button onclick="reset();">Reset</button> -->
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <!-- <button type="button" class="confirm">Confirm</button>
+        <button type="button" class="cancel">Cancel</button> -->
+      </div>
+      <div class="button-con">
+
+        <button onclick="spin()" class="btn-class-name spin-button" >
+          <audio src="spin.mp3"></audio>
+          <span class="back"></span>
+          <span class="front">SPIN</span>
+        </button>
+
+        <button onclick="reset()" class="btn-class-name btn-reset" >
+          <span class="back"></span>
+          <span class="front">RESET</span>
+        </button>
+        
+      </div>
+    </div>
   </div>
+
+
 </body>
 
 </html>
