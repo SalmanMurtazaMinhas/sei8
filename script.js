@@ -73,7 +73,7 @@ const spinButton = document.querySelector('.spin-button')
 
         symbols.innerHTML = '';
 
-        symbols.appendChild(createSymbolElement('❓❓❓'));
+        symbols.appendChild(createSymbolElement('???'));
 
         for (let i = 0; i < 50; i++) {
           slotSymbols[index ].forEach(symbol => {
