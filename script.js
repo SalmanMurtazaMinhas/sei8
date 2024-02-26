@@ -1,7 +1,13 @@
+// const slotSymbols = [
+//   ['Kawther','Kawther', 'ZainabA', 'Noor','ZainabA', 'Sami', 'Hasan', 'Dawood'],
+//   ['Majid','Majid', '-', 'Amira','-', '-', 'ZainabS', 'Raja'],
+//   ['Abbas','Abbas', 'Saud',  'SayedE','Saud', 'Zahra', 'Hussain', 'Bashayer']
+// ];
+
 const slotSymbols = [
-  ['Kawther','Kawther', 'ZainabA', 'Noor','ZainabA', 'Sami', 'Hasan', 'Dawood'],
-  ['Majid','Majid', '-', 'Amira','-', '-', 'ZainabS', 'Raja'],
-  ['Abbas','Abbas', 'Saud',  'SayedE','Saud', 'Zahra', 'Hussain', 'Bashayer']
+  ['AliElsayed', 'Abdulamir',  'Abdulamir','Esra','Salman', 'Hamad', 'Jasim', 'Nayef'],
+  ['ShaikhaJ', 'AliElbanna', 'AliElbanna','Yasmeen','ShaikhaE', 'Nabeel', 'Mariam', 'ZahraAli'],
+  ['Sayed', 'Fatima', 'Fatima', 'Tasneem', 'Ahmed', 'Zainab', 'ZahraAlH', 'Abood']
 ];
 
 const spinButton = document.querySelector('.spin-button')
@@ -64,42 +70,38 @@ const spinButton = document.querySelector('.spin-button')
       }
       const slots = document.querySelectorAll('.slot');
       let completedSlots = 0;
-
+    
       slots.forEach((slot, index) => {
         const symbols = slot.querySelector('.symbols');
         const symbolHeight = symbols.querySelector('.symbol')?.clientHeight;
         const symbolCount = symbols.childElementCount;
-        console.log('symbolcount' , symbolCount)
-
+        console.log('symbolcount', symbolCount)
+    
         symbols.innerHTML = '';
-
-        symbols.appendChild(createSymbolElement('???'));
-
-        for (let i = 0; i < 50; i++) {
-          slotSymbols[index ].forEach(symbol => {
-            symbols.appendChild(createSymbolElement(symbol));
-            // slotSymbols[0].splice(0,1)
-          });
+    
+        symbols.appendChild(createSymbolElement('???')); // Placeholder symbol
+    
+        for (let i = 0; i < 70; i++) {
+          symbols.appendChild(createSymbolElement(slotSymbols[index][0])); // Always appending symbol at index 0
         }
-
+    
         const totalDistance = symbolCount * symbolHeight;
         const randomOffset = -Math.floor(0.5 * (symbolCount - 1) + 1) * symbolHeight;
-        // console.log(randomOffset)
         symbols.style.top = `${randomOffset}px`;
-        
+    
         symbols.addEventListener('transitionend', () => {
           completedSlots++;
           if (completedSlots === slots.length) {
             logDisplayedSymbols();
           }
-          
+    
         }, { once: true });
-
+    
       });
-
+    
       spun = true;
-
     }
+    
 
     function reset() {
       const slots = document.querySelectorAll('.slot');

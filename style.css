@@ -27,7 +27,7 @@ body {
   }
   
   .slot {
-    width: 300px;
+    width: 20vw;
     height: 150px;
     border: 1px solid black;
     border-radius: 7.5px;
@@ -40,6 +40,7 @@ body {
   }
   
   .slot .symbols {
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -47,16 +48,15 @@ body {
   }
   
   .slot .symbol {
-    width: 100px;
     height: 150px;
-    font-size: 60px;
     line-height: 100px;
     display: block;
     text-align: center;
-    padding-left: 90px;
+    /* padding-left: 90px; */
     padding-top: 25px;
-    font-size: 40px;
-    
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
   }
   
   button {
